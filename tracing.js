@@ -8,7 +8,7 @@ const { Resource } = require('@opentelemetry/resources');
 const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 
 const exporterOptions = {
-   url: 'http://213.136.90.142:4318/v1/traces'
+   url: 'http://otel-opentelemetry-collector.monitoring.svc.cluster.local:4318/v1/traces'
    }
    
 const traceExporter = new OTLPTraceExporter(exporterOptions);
@@ -16,7 +16,7 @@ const sdk = new opentelemetry.NodeSDK({
    traceExporter,
    instrumentations: [getNodeAutoInstrumentations()],
    resource: new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: 'ssh_backend'
+      [SemanticResourceAttributes.SERVICE_NAME]: 'connectifie'
       })
 });
 
